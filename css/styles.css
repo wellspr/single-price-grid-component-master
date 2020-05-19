@@ -111,6 +111,12 @@ body {
   text-align: center;
   text-decoration: none;
   margin-top: 35px;
+  transition: 0.5s;
+}
+
+.container .price .button:hover {
+  transform: scale(1.05);
+  transition: 0.5s;
 }
 
 .container .why-us {
