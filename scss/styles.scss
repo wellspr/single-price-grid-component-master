@@ -1,0 +1,322 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+// ## Colors
+// ### Primary
+// - Cyan:
+$cyan: hsl(179, 62%, 43%);
+$light-cyan: hsla(179, 62%, 43%, 0.7);
+// - Bright Yellow:
+$bright-yellow: hsl(71, 73%, 54%);
+// ### Neutral
+// - Light Gray:
+$light-gray: hsl(204, 43%, 93%);
+$light-gray-transparent: hsla(204, 43%, 93%,0.5);
+// - Grayish Blue:
+$grayish-blue: hsl(218, 22%, 67%);
+
+// Paddings
+// Main Paddding:
+$main-padding: 8%;
+
+// ### Font
+// - Family: [Karla](https://fonts.google.com/specimen/Karla)
+// - Weights: 400, 700
+@import url('https://fonts.googleapis.com/css2?family=Karla:wght@400;700&display=swap');
+
+// Headings Sizes
+$body-font-size: 16px;
+$heading1-font-size: 1.5rem;
+$heading2-font-size: 1.3rem;
+$heading3-font-size: 1.1rem;
+$text-font-size: 1.0rem;
+
+@mixin flex() {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    flex-grow: 1;
+}
+
+html {
+    height: 100vh;
+}
+
+body {
+    height: 100%;
+    font-family: 'Karla', sans-serif;
+    font-weight: 400;
+    font-size: $body-font-size;
+}
+
+.outer-container{
+    @include flex();
+    justify-content: space-between;
+    align-items: center;
+    min-height: 100%;
+
+}
+
+.heading1{
+    font-size: $heading1-font-size;
+}
+.heading2{
+    font-size: $heading2-font-size;
+}
+.heading3{
+    font-size: $heading3-font-size;
+}
+.text{
+    font-size: $text-font-size;
+    line-height: 2;
+}
+
+.container {
+    min-height: 100%;
+    max-width: 1440px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+
+    .join {
+        @include flex();
+        padding: $main-padding;
+
+        .heading1 {
+            color: $cyan;
+        }
+
+        .heading3 {
+            color: $bright-yellow;
+            margin: 8% 0;
+        }
+
+        .text {
+            color: $grayish-blue;
+        }
+    }
+
+    .price {
+        @include flex();
+        padding: $main-padding;
+        background-color: $cyan;
+        color: $light-gray;
+
+        .price-text{
+            display: flex;
+            align-items: center;
+            color: $light-gray-transparent;
+            margin: 15px 0;
+            // padding: 20px 0;
+        }
+        .value {
+            color: $light-gray;
+            font-size: 35px;
+            margin-right: 15px;
+        }
+
+        .button {
+            display: block;
+            background-color: $bright-yellow;
+            font-weight: 700;
+            width: 100%;
+            padding: 6%;
+            border-radius: 5px;
+            color: $light-gray;
+            text-align: center;
+            text-decoration: none;
+            margin-top: 35px;
+        }
+    }
+
+    .why-us {
+        @include flex();
+        padding: $main-padding;
+        background-color: $light-cyan;
+        color: $light-gray;
+
+        ul{
+            margin: 15px 0;
+        }
+
+        li {
+            list-style: none;
+            line-height: 1.5;
+        }
+    }
+
+}
+
+footer {
+    // @include flex();
+    background-color: $light-cyan;
+    color: $light-gray;
+    padding: 15px 0;
+    width: 100%;
+    max-width: 1440px;
+
+    .attribution {
+        font-size: 11px;
+        text-align: center;
+    }
+
+    .attribution a {
+        color: hsl(228, 45%, 44%);
+    }
+}
+
+@media screen and (min-width: 425px){
+
+    $factor: 1.1;
+
+    .heading1{
+        font-size: $heading1-font-size * $factor;
+    }
+    .heading2{
+        font-size: $heading2-font-size * $factor;
+    }
+    .heading3{
+        font-size: $heading3-font-size * $factor;
+    }
+    .text{
+        font-size: $text-font-size * $factor;
+    }
+
+    .container{
+
+        .price {
+            .button{
+            font-size: $body-font-size * ($factor + 0.1);
+            padding: 3%;
+            border-radius: 10px;
+            }
+        }
+
+        .why-us{
+
+            ul{
+
+                li{
+                    font-size: $body-font-size * ($factor + 0.1);
+                }
+            }
+
+        }
+
+    }
+
+}
+
+
+@media screen and (min-width: 768px){
+
+    $factor: 1.4;
+
+    .heading1{
+        font-size: $heading1-font-size * $factor;
+    }
+    .heading2{
+        font-size: $heading2-font-size * $factor;
+    }
+    .heading3{
+        font-size: $heading3-font-size * $factor;
+    }
+    .text{
+        font-size: $text-font-size * ($factor + 0.3);
+    }
+
+    .container{
+
+        .price {
+            .button{
+            font-size: $body-font-size * ($factor + 0.1);
+            }
+        }
+
+        .why-us{
+
+            ul{
+
+                li{
+                    font-size: $body-font-size * ($factor + 0.1);
+                }
+            }
+
+        }
+
+    }
+
+
+}
+
+
+@media screen and (min-width: 1024px){
+
+    $factor: 1.8;
+
+    .heading1{
+        font-size: $heading1-font-size * $factor;
+    }
+    .heading2{
+        font-size: $heading2-font-size * $factor;
+    }
+    .heading3{
+        font-size: $heading3-font-size * $factor;
+    }
+    .text{
+        font-size: $text-font-size * $factor;
+    }
+
+    .container{
+        flex-direction: row;
+        flex-wrap: wrap;
+
+        .join{
+            width: 100%;
+            padding: 5%;
+
+            .heading3{
+                margin: 3% 0;
+            }
+        }
+
+        .price{
+            width: 50%;
+            padding: 5%;
+
+            .price-text{
+                margin: 10% 0;
+            }
+            .value{
+                font-size: 70px;
+            }
+            .button{
+                font-size: $body-font-size * ($factor + 0.1);
+                padding: 25px;
+            }
+        }
+
+        .why-us{
+            width: 50%;
+            padding: 5%;
+
+            ul{
+                margin-top: 45px;
+
+                li{
+                    font-size: $body-font-size * $factor;
+                }
+            }
+        }
+    }
+
+    footer{
+        height: 20px;
+        width: 100%;
+        padding: 0;
+        margin: 0;
+    }
+
+}
