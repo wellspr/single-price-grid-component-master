@@ -17,9 +17,12 @@ $light-gray-transparent: hsla(204, 43%, 93%,0.5);
 // - Grayish Blue:
 $grayish-blue: hsl(218, 22%, 67%);
 
+$shadow: hsla(204, 43%, 93%,0.5);
+
 // Paddings
 // Main Paddding:
 $main-padding: 8%;
+$main-border-radius: 5px;
 
 // ### Font
 // - Family: [Karla](https://fonts.google.com/specimen/Karla)
@@ -28,16 +31,23 @@ $main-padding: 8%;
 
 // Headings Sizes
 $body-font-size: 16px;
-$heading1-font-size: 1.5rem;
-$heading2-font-size: 1.3rem;
-$heading3-font-size: 1.1rem;
-$text-font-size: 1.0rem;
+$heading1-font-size: 1.3rem;
+$heading2-font-size: 1.1rem;
+$heading3-font-size: 1rem;
+$text-font-size: 0.9rem;
 
-@mixin flex() {
+@mixin flex-centered() {
     display: flex;
     flex-direction: column;
     justify-content: center;
+    align-items: center;
     flex-grow: 1;
+}
+
+@mixin flex-column($align) {
+    display: flex;
+    flex-direction: column;
+    justify-content: $align;
 }
 
 html {
@@ -51,42 +61,48 @@ body {
     font-size: $body-font-size;
 }
 
-.outer-container{
-    @include flex();
-    justify-content: space-between;
-    align-items: center;
+.main-container{
     min-height: 100%;
+    @include flex-column(center);
+    background-color: $light-gray;
+}
 
+.outer-container{
+    @include flex-centered();
+    padding: 8%;
 }
 
 .heading1{
     font-size: $heading1-font-size;
+    font-weight: 700;
 }
 .heading2{
     font-size: $heading2-font-size;
+    font-weight: 700;
 }
 .heading3{
     font-size: $heading3-font-size;
 }
 .text{
     font-size: $text-font-size;
-    line-height: 2;
+    line-height: 1.6;
 }
 
 .container {
-    min-height: 100%;
-    max-width: 1440px;
-    display: flex;
-    flex-direction: column;
-    flex-grow: 1;
+    max-width: 992px;
+    @include flex-column(center);
+    border-radius: $main-border-radius;
+    box-shadow: 1px 1px 5px $grayish-blue;
 
     .join {
-        @include flex();
+        @include flex-column(space-between);
+        background-color: #fff;
         padding: $main-padding;
+        border-top-left-radius: $main-border-radius;
+        border-top-right-radius: $main-border-radius;
 
         .heading1 {
             color: $cyan;
-            font-weight: 700;
         }
 
         .heading3 {
@@ -100,7 +116,7 @@ body {
     }
 
     .price {
-        @include flex();
+        @include flex-column(space-between);
         padding: $main-padding;
         background-color: $cyan;
         color: $light-gray;
@@ -118,7 +134,7 @@ body {
         }
         .value {
             color: $light-gray;
-            font-size: 35px;
+            font-size: 30px;
             margin-right: 15px;
         }
 
@@ -126,13 +142,14 @@ body {
             display: block;
             background-color: $bright-yellow;
             font-weight: 700;
+            font-size: $body-font-size * 1.1;
             width: 100%;
-            padding: 6%;
+            padding: 5%;
             border-radius: 5px;
             color: $light-gray;
             text-align: center;
             text-decoration: none;
-            margin-top: 35px;
+            margin-top: 25px;
             transition: 0.5s;
 
             &:hover{
@@ -143,34 +160,30 @@ body {
     }
 
     .why-us {
-        @include flex();
+        @include flex-column(space-between);
         padding: $main-padding;
         background-color: $light-cyan;
         color: $light-gray;
-
-        .heading2{
-            font-weight: 700;
-        }
+        border-bottom-left-radius: $main-border-radius;
+        border-bottom-right-radius: $main-border-radius;
 
         ul{
             margin: 15px 0;
+
+            li {
+                list-style: none;
+            }
+
         }
 
-        li {
-            list-style: none;
-            line-height: 1.5;
-        }
+
     }
 
 }
 
 footer {
-    // @include flex();
-    background-color: $light-cyan;
-    color: $light-gray;
     padding: 15px 0;
     width: 100%;
-    max-width: 1440px;
 
     .attribution {
         font-size: 11px;
@@ -209,73 +222,31 @@ footer {
             }
         }
 
-        .why-us{
-
-            ul{
-
-                li{
-                    font-size: $body-font-size * ($factor + 0.1);
-                }
-            }
-
-        }
-
     }
 
 }
 
 
-@media screen and (min-width: 768px){
-
-    $factor: 1.4;
-
-    .heading1{
-        font-size: $heading1-font-size * $factor;
-    }
-    .heading2{
-        font-size: $heading2-font-size * $factor;
-    }
-    .heading3{
-        font-size: $heading3-font-size * $factor;
-    }
-    .text{
-        font-size: $text-font-size * $factor;
-    }
+@media screen and (min-width: 600px) and (max-width: 1099px){
 
     .container{
 
-        .price {
-            .button{
-            font-size: $body-font-size * ($factor + 0.1);
-            }
-        }
-
-        .why-us{
-
-            ul{
-
-                li{
-                    font-size: $body-font-size * $factor;
-                }
-            }
-
-        }
+        max-width: 500px;
 
     }
-
 
 }
 
 
-@media screen and (min-width: 1024px){
+@media screen and (min-width: 1100px){
 
-    $factor: 1.8;
+    $factor: 1.5;
 
     .heading1{
-        font-size: $heading1-font-size * $factor;
+        font-size: $heading1-font-size * ($factor + 0.2);
     }
     .heading2{
-        font-size: $heading2-font-size * $factor;
+        font-size: $heading2-font-size * ($factor + 0.2);
     }
     .heading3{
         font-size: $heading3-font-size * $factor;
@@ -283,6 +254,8 @@ footer {
     .text{
         font-size: $text-font-size * $factor;
     }
+
+    $padding: 6%;
 
     .container{
         flex-direction: row;
@@ -290,35 +263,36 @@ footer {
 
         .join{
             width: 100%;
-            padding: 5%;
+            padding: $padding;
 
             .heading3{
-                margin: 3% 0;
+                margin: 2% 0;
             }
         }
 
         .price{
             width: 50%;
-            padding: 5%;
+            padding: $padding;
 
             .price-text{
-                margin: 10% 0;
+                margin: 45px 0 10px;
             }
             .value{
-                font-size: 70px;
+                font-size: 65px;
             }
             .button{
-                font-size: $body-font-size * ($factor + 0.1);
+                font-size: $body-font-size * ($factor + 0.2);
                 padding: 25px;
             }
         }
 
         .why-us{
             width: 50%;
-            padding: 5%;
+            padding: $padding;
 
             ul{
                 margin-top: 45px;
+                margin-bottom: 0;
 
                 li{
                     font-size: $body-font-size * $factor;
