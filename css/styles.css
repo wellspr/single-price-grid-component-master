@@ -61,6 +61,7 @@ body {
 
 .container .join .heading1 {
   color: #2ab2af;
+  font-weight: 700;
 }
 
 .container .join .heading3 {
@@ -80,6 +81,10 @@ body {
   padding: 8%;
   background-color: #2ab2af;
   color: #e5eff5;
+}
+
+.container .price .heading2 {
+  font-weight: 700;
 }
 
 .container .price .price-text {
@@ -116,6 +121,10 @@ body {
   padding: 8%;
   background-color: rgba(42, 178, 175, 0.7);
   color: #e5eff5;
+}
+
+.container .why-us .heading2 {
+  font-weight: 700;
 }
 
 .container .why-us ul {
@@ -178,13 +187,13 @@ footer .attribution a {
     font-size: 1.54rem;
   }
   .text {
-    font-size: 1.7rem;
+    font-size: 1.4rem;
   }
   .container .price .button {
     font-size: 24px;
   }
   .container .why-us ul li {
-    font-size: 24px;
+    font-size: 22.4px;
   }
 }
 
